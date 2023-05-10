@@ -268,7 +268,6 @@ func (rf *Raft) getElectionTimeout() time.Duration {
 
 func (rf *Raft) becomeFollower(term int) {
 	//expects existing lock state
-	// fmt.Printf("S%d has become a follower with term %d\n", rf.me, term)
 	rf.currentTerm = term
 	rf.state = 0
 	rf.votedFor = -1
@@ -317,7 +316,6 @@ func (rf *Raft) sendHeartbeats() {
 func (rf *Raft) startLeader() {
 	//expects locking state
 	rf.state = 2
-	// fmt.Printf("S%d: Become leader for term %d", rf.me, rf.currentTerm)
 	//send heartbeats while leader
 	go func() {
 		for {
@@ -344,8 +342,6 @@ func (rf *Raft) startElection() {
 
 	rf.electionTimeout = time.Now()
 
-	// fmt.Printf("S%d: Become candidate for term %d", rf.me, savedCurrentTerm)
-
 	totalVotes := 1
 
 	for idx, _ := range rf.peers {
@@ -358,17 +354,14 @@ func (rf *Raft) startElection() {
 			args.Term = savedCurrentTerm
 
 			reply := RequestVoteReply{}
-			// fmt.Printf("S%d: Requesting vote from S%d", rf.me, peerId)
 
 			ok := rf.sendRequestVote(peerId, &args, &reply)
 
 			if ok {
 				rf.mu.Lock()
 				defer rf.mu.Unlock()
-				// fmt.Printf("S%d: Received reply from S%d", rf.me, peerId)
 
 				if rf.state != 1 {
-					// fmt.Printf("S%d left candidate state while waiting for vote", rf.me)
 					return
 				}
 
@@ -402,20 +395,16 @@ func (rf *Raft) runElectionTimer() {
 	currentTerm := rf.currentTerm
 	rf.mu.Unlock()
 
-	// fmt.Printf("S%d: Started election timer", rf.me)
-
 	for {
 		time.Sleep(10 * time.Millisecond)
 		rf.mu.Lock()
 		if rf.state != 1 && rf.state != 0 {
-			// fmt.Printf("S%d: Aborting election", rf.me)
 			rf.mu.Unlock()
 			break
 		}
 
 		//received a heartbeat that updated us
 		if currentTerm != rf.currentTerm {
-			// fmt.Printf("S%d: Election term changed from %d to %d", rf.me, currentTerm, rf.currentTerm)
 			rf.mu.Unlock()
 			break
 		}
@@ -431,9 +420,6 @@ func (rf *Raft) runElectionTimer() {
 
 	}
 }
-
-// The ticker go routine starts a new election if this peer hasn't received
-// heartsbeats recently.
 
 func (rf *Raft) ticker() {
 	for !rf.killed() {

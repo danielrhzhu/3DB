@@ -18,14 +18,11 @@ package raft
 //
 
 import (
-	//	"bytes"
-
 	"math/rand"
 	"sync"
 	"sync/atomic"
 	"time"
 
-	//	"6.824/labgob"
 	"danieldb/networking"
 )
 

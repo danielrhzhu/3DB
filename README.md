@@ -22,7 +22,7 @@ see **Definitions** for italicized terms.
 
 
 ## References:
-This project closely closes the teachings of MIT's Distributed Systems course [6.824](http://nil.csail.mit.edu/6.824/2022/general.html). The consensus algorithm used in 3DB is detailed in this [paper](http://nil.csail.mit.edu/6.824/2022/papers/raft-extended.pdf).
+This project closely follows the teachings of MIT's Distributed Systems course [6.824](http://nil.csail.mit.edu/6.824/2022/general.html). The consensus algorithm used in 3DB is detailed in this [paper](http://nil.csail.mit.edu/6.824/2022/papers/raft-extended.pdf).
 
 ## Changelog:
 + **May 10, 2023**: Leader elections are implemented. So exciting!

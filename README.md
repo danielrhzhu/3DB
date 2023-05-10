@@ -22,7 +22,7 @@ see **Definitions** for italicized terms.
 
 
 ## References:
-This project closely follows the teachings of MIT's Distributed Systems course [6.824](http://nil.csail.mit.edu/6.824/2022/general.html). The consensus algorithm used in 3DB is detailed in this [paper](http://nil.csail.mit.edu/6.824/2022/papers/raft-extended.pdf).
+This project closely follows the teachings of MIT's Distributed Systems course [6.824](http://nil.csail.mit.edu/6.824/2022/general.html). The consensus algorithm used in 3DB is detailed in this [paper](http://nil.csail.mit.edu/6.824/2022/papers/raft-extended.pdf). Concepts from Designing Data Intensive Applications by Martin Kleppmann were also used to create 3DB.
 
 ## Changelog:
 + **May 10, 2023**: Leader elections are implemented. So exciting!

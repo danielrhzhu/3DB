@@ -5,8 +5,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"danieldb/networking"
-	"danieldb/raft"
+	"3db/networking"
+	"3db/raft"
 )
 
 const Debug = false
@@ -18,11 +18,7 @@ func DPrintf(format string, a ...interface{}) (n int, err error) {
 	return
 }
 
-type Op struct {
-	// Your definitions here.
-	// Field names must start with capital letters,
-	// otherwise RPC will break.
-}
+type Op struct{}
 
 type KVServer struct {
 	mu      sync.Mutex
@@ -33,16 +29,11 @@ type KVServer struct {
 
 	maxraftstate int // snapshot if log grows this big
 
-	// Your definitions here.
 }
 
-func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
-	// Your code here.
-}
+func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {}
 
-func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
-	// Your code here.
-}
+func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {}
 
 // the tester calls Kill() when a KVServer instance won't
 // be needed again. for your convenience, we supply
@@ -55,7 +46,6 @@ func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *KVServer) Kill() {
 	atomic.StoreInt32(&kv.dead, 1)
 	kv.rf.Kill()
-	// Your code here, if desired.
 }
 
 func (kv *KVServer) killed() bool {
@@ -84,12 +74,8 @@ func StartKVServer(servers []*networking.ClientEnd, me int, persister *raft.Pers
 	kv.me = me
 	kv.maxraftstate = maxraftstate
 
-	// You may need initialization code here.
-
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
-
-	// You may need initialization code here.
 
 	return kv
 }

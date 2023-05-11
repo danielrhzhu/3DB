@@ -1,16 +1,8 @@
 package raft
 
-//
-// support for Raft tester.
-//
-// we will use the original config.go to test your code for grading.
-// so, while you can modify this code to help you debug, please
-// test with the original before submitting.
-//
-
 import (
+	"3db/networking"
 	"bytes"
-	"danieldb/networking"
 	"log"
 	"math/rand"
 	"runtime"

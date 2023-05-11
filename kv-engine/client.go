@@ -4,12 +4,11 @@ import (
 	"crypto/rand"
 	"math/big"
 
-	"danieldb/networking"
+	"3db/networking"
 )
 
 type Clerk struct {
 	servers []*networking.ClientEnd
-	// You will have to modify this struct.
 }
 
 func nrand() int64 {
@@ -22,7 +21,6 @@ func nrand() int64 {
 func MakeClerk(servers []*networking.ClientEnd) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
-	// You'll have to add code here.
 	return ck
 }
 
@@ -30,7 +28,6 @@ func MakeClerk(servers []*networking.ClientEnd) *Clerk {
 // returns "" if the key does not exist.
 // keeps trying forever in the face of all other errors.
 //
-// you can send an RPC with code like this:
 // ok := ck.servers[i].Call("KVServer.Get", &args, &reply)
 //
 // the types of args and reply (including whether they are pointers)
@@ -38,21 +35,17 @@ func MakeClerk(servers []*networking.ClientEnd) *Clerk {
 // arguments. and reply must be passed as a pointer.
 func (ck *Clerk) Get(key string) string {
 
-	// You will have to modify this function.
 	return ""
 }
 
 // shared by Put and Append.
 //
-// you can send an RPC with code like this:
 // ok := ck.servers[i].Call("KVServer.PutAppend", &args, &reply)
 //
 // the types of args and reply (including whether they are pointers)
 // must match the declared types of the RPC handler function's
 // arguments. and reply must be passed as a pointer.
-func (ck *Clerk) PutAppend(key string, value string, op string) {
-	// You will have to modify this function.
-}
+func (ck *Clerk) PutAppend(key string, value string, op string) {}
 
 func (ck *Clerk) Put(key string, value string) {
 	ck.PutAppend(key, value, "Put")

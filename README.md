@@ -27,4 +27,6 @@ see **Definitions** for italicized terms.
 This project closely follows the teachings of MIT's Distributed Systems course [6.824](http://nil.csail.mit.edu/6.824/2022/general.html). The consensus algorithm used in 3DB is detailed in this [paper](http://nil.csail.mit.edu/6.824/2022/papers/raft-extended.pdf). Concepts from Designing Data Intensive Applications by Martin Kleppmann were also used to create 3DB.
 
 ## Changelog:
-+ **May 10, 2023**: Leader elections are implemented. So exciting!
++ **May 7, 2023**: Heartbeats are implemented. So exciting!
++ **May 10, 2023**: Added support for leader elections.
++ **May 11, 2023**: Log replication features planned — created function prototypes. Refactored election code to support log entries.

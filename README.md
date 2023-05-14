@@ -30,3 +30,4 @@ This project closely follows the teachings of MIT's Distributed Systems course [
 + **May 7, 2023**: Heartbeats are implemented. So exciting!
 + **May 10, 2023**: Added support for leader elections.
 + **May 11, 2023**: Log replication features planned — created function prototypes. Refactored election code to support log entries.
++ **May 14, 2023**: Log replication is done — requires small fixes but nonetheless working
